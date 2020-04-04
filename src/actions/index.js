@@ -16,7 +16,6 @@ export function selectMessage(channel) {
 }
 
 export function createMessage(channel, content, author) {
-  console.log("create message !!");
   const url = `https://wagon-chat.herokuapp.com/${channel}/messages`
   const body = { content: content, author: author };
   return fetch(url, {

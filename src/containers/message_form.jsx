@@ -21,9 +21,15 @@ class MessageForm extends Component {
 
   render() {
     return (
-      <div>
-        <input type="text" onChange={this.handleChange} value={this.state.input}/>
-        <button type="submit" className="btn btn-primary" onClick={this.handleClick}>Envoyer</button>
+      <div className="form-group form-inline" style={{paddingTop: 30}}>
+        <div className="row">
+          <div className="col-sm-10">
+            <input type="text" className="form-control form-control-lg" style={{width: "100%"}} placeholder="Your message" onChange={this.handleChange} value={this.state.input} />
+          </div>
+          <div className="col-sm-2">
+            <button type="submit" className="btn btn-primary" style={{width: "100%"}} onClick={this.handleClick}>Send</button>
+          </div>
+        </div>
       </div>
     );
   }

@@ -3,7 +3,6 @@ export default function (state, action) {
     return null;
   }
 
-  console.log(action, state, 'action');
   switch (action.type) {
     case 'SELECT_MESSAGE':
       return action.payload;

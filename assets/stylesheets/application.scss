@@ -12,12 +12,29 @@ body {
   height: 100vh;
 }
 
+.menu {
+  background-color: rgb(219, 219, 219);
+  margin: 0;
+}
+
 .channels {
   flex: 0 1 500px;
-  background-color: red;
+  background-color: rgb(244, 244, 244);
+}
+
+.messages-list {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 20px 20px 0 20px;
 }
 
 .messages {
-  flex-grow: 1;
-  background-color: blue;
+  height: 100%;
+  overflow: scroll;
+}
+
+.form-group {
+  border-top: 2px solid rgb(244, 244, 244);
+
 }
