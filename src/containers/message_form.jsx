@@ -15,7 +15,7 @@ class MessageForm extends Component {
   }
 
   handleClick= (e) => {
-    this.props.createMessage('general', this.state.input, 'charles')
+    this.props.createMessage('general', this.state.input, this.props.currentUser);
     this.setState({ input: "" });
   }
 
@@ -42,5 +42,11 @@ const mapDispatchToProps = (dispatch) => {
   );
 }
 
+const mapStateToProps = (state) => {
+  return {
+    currentUser: state.user
+  };
+};
 
-export default connect(null, mapDispatchToProps)(MessageForm);
+
+export default connect(mapStateToProps, mapDispatchToProps)(MessageForm);

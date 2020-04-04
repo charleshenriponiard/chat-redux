@@ -1,5 +1,8 @@
-export default function (state, action) {
-  if (state === undefined) {
-    return null;
+import { initialState } from '../index';
+
+export default function(state = null, action) {
+  switch (action.type) {
+    default:
+      return initialState.channels;
   }
 }
