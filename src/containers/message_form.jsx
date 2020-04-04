@@ -7,15 +7,15 @@ class MessageForm extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { input: ""};
+    this.state = { input: "" };
   }
 
   handleChange = (e) => {
     this.setState({ input: e.target.value });
   }
 
-  handleClick= (e) => {
-    this.props.createMessage('general', this.state.input, this.props.currentUser);
+  handleClick = () => {
+    this.props.createMessage(this.props.selectChanel, this.state.input, this.props.currentUser);
     this.setState({ input: "" });
   }
 
@@ -40,11 +40,12 @@ const mapDispatchToProps = (dispatch) => {
     { createMessage: createMessage },
     dispatch
   );
-}
+};
 
 const mapStateToProps = (state) => {
   return {
-    currentUser: state.user
+    currentUser: state.user,
+    selectChanel: state.selectChannel
   };
 };
 

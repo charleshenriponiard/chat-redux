@@ -1,20 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { selectChannel } from '../actions';
 
 class ChannelsList extends Component {
 
+  handleClass = (channel) => {
+    let classes = "channel";
+    if (this.props.selectChanel === channel) {
+      return classes += " selected"
+    }
+    return classes;
+  }
+  handleClick = (e) => {
+    this.props.selectChannel(e);
+  }
 
   render() {
-    console.log(this.props.selectChanel, 'selectChanel');
-    console.log(this.props.channels, 'channels');
-
-    let classes = "";
-    if (this.props.selectChanel === this.props.channels) {
-      return classes += "selected"
-    }
     return (
       <div className="channels">
-        {this.props.channels.map((channel) => <h1 className={ classes } key={channel + Math.random(100000)}>{channel}</h1> )}
+        <p className="headers">Channel list :</p>
+        {this.props.channels.map((channel) => <h2 onClick={() => this.handleClick(channel)}  className={ this.handleClass(channel) } key={channel + Math.random(100000)}>{channel}</h2> )}
       </div>
     );
   }
@@ -27,5 +33,12 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(ChannelsList);
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(
+    {selectChannel: selectChannel},
+    dispatch
+  );
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChannelsList);
 
