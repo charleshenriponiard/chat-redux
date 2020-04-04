@@ -13,16 +13,17 @@ class MessagesList extends Component {
   }
 
   render() {
+    console.log(this.props.messages, 'message dans le render')
     if (this.props.messages) {
       const { messages } = this.props;
       return (
         <div className="messages">
-          { messages.map((el) => <Message message={el} key={el.content} /> )}
+          { messages.map(el => <Message message={el} key={el.content + Math.random(10000)} />) }
           <MessageForm />
         </div>
       );
     }
-    return <h1>va te faire enculer</h1>;
+    return null;
   }
 }
 

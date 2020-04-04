@@ -4,7 +4,7 @@ class Message extends Component {
   render() {
     return ( 
       <div>
-        <p>{this.props.message.author}</p>
+        <h3>{this.props.message.author}</h3>
         <p>{this.props.message.content}</p>
       </div>
        
