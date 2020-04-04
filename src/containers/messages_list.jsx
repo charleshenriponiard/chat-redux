@@ -8,8 +8,13 @@ import MessageForm from '../containers/message_form';
 
 class MessagesList extends Component {
 
-  componentDidMount() {
-    return this.props.selectMessages('general');
+  componentWillMount() {
+    return setInterval(() => {
+      this.props.selectMessages('general')}, 500);
+  }
+
+  componentWillUnmount() {
+    clearInterval
   }
 
   render() {
