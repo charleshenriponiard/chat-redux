@@ -18,8 +18,8 @@ import { applyMiddleware } from 'redux';
 export const initialState = {
   messages: [],
   currentUser: window.prompt('Your user name please ?') || `anonymous${Math.floor(10 + (Math.random() * 90))}`,
-  channels: ['Bordeaux', 'Marseille', 'Paris', 'General'],
-  selectChannel: 'General'
+  channels: ['bordeaux', 'marseille', 'paris', 'general'],
+  selectChannel: 'general'
 };
 // State and reducers
 

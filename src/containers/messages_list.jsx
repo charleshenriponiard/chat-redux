@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { selectMessage, selectChannel } from '../actions';
+import { selectMessage } from '../actions';
+// import { selectChannel } from '../actions';
 import Message from '../components/message';
 import MessageForm from '../containers/message_form';
 
@@ -9,9 +10,11 @@ import MessageForm from '../containers/message_form';
 class MessagesList extends Component {
 
   componentWillMount() {
-    this.props.selectMessages(this.props.selectChannel);
-    // return setInterval(() => {
-    //   this.props.selectMessages(this.props.selectChannel)}, 500);
+    // this.props.selectMessages('general');
+    
+    return setInterval(() => {
+      return this.props.selectMessages('general');
+    }, 500);
   }
 
   componentWillUnmount() {

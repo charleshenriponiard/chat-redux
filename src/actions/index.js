@@ -1,6 +1,7 @@
 // TODO: add and export your own actions
 
 export function selectMessage(channel) {
+  console.log(channel);
   return fetch(`https://wagon-chat.herokuapp.com/${channel}/messages`)
     .then(response => response.json())
     .then((data) => {
@@ -10,7 +11,7 @@ export function selectMessage(channel) {
       };
     })
     .catch((error) => {
-      console.log(error, 'error with the fetch !');
+      return console.log(error, 'error with the fetch !');
     }
     );
 }
