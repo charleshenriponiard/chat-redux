@@ -4,7 +4,7 @@ class Menu extends Component {
   render() {
     return(
       <div className="menu">
-        <img className="picture" style={{width: 150, height: 50, margin: 20}} src="le-wagon.png" alt="logo"/>
+        <img className="picture" style={{width: 150, height: 50, margin: 20}} src="../../assets/stylesheets/images/le-wagon.png" alt="logo"/>
       </div>
     ) 
   }

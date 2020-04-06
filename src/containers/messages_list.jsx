@@ -41,7 +41,7 @@ class MessagesList extends Component {
       return (
         <div className="messages-list">
           <audio id="myAudio">
-            <source src="insight.mp3" type="audio/mpeg"/>
+            <source src="../../assets/stylesheets/images/insight.mp3" type="audio/mpeg"/>
           </audio>
           <h2 style={styles}>Channel: #{this.props.selectChanel ? this.props.selectChanel.toUpperCase() : "UNDEFINED"}</h2>
           <div className="messages">
