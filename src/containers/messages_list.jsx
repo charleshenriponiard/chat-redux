@@ -19,15 +19,16 @@ class MessagesList extends Component {
     }, 500);
   }
 
-  componentWillUnmount = () => {
-    return clearInterval;
-  }
-
-  componentDidUpdate = (prevProps, prevState) => {
+  componentDidUpdate = (prevProps) => {
+    this.list.scrollTop = this.list.scrollHeight;
     if (prevProps.messages && prevProps.messages.length < this.props.messages.length && this.props.messages[ this.props.messages.length -1].author !== this.props.currentUser  ) {
       const x = document.getElementById("myAudio");
       x.play();
     }
+  }
+
+  componentWillUnmount = () => {
+    return clearInterval;
   }
 
   render() {
@@ -41,11 +42,11 @@ class MessagesList extends Component {
       return (
         <div className="messages-list">
           <audio id="myAudio">
-            <source src="../../assets/stylesheets/images/insight.mp3" type="audio/mpeg"/>
+            <source src="../../assets/images/insight.mp3" type="audio/mpeg"/>
           </audio>
           <h2 style={styles}>Channel: #{this.props.selectChanel ? this.props.selectChanel.toUpperCase() : "UNDEFINED"}</h2>
-          <div className="messages">
-            { messages.map(el => <Message message={el} key={el.content + Math.random(10000)} />) }
+          <div className="messages" ref={(list) => { this.list = list; }}>
+            { messages.map(el => <Message message={el} key={el.content + Math.random(10000)} ref={this.scroll} />) }
           </div>
           <MessageForm />
         </div>
