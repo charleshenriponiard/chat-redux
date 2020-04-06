@@ -23,11 +23,27 @@ class MessagesList extends Component {
     return clearInterval;
   }
 
+  componentDidUpdate = (prevProps, prevState) => {
+    if (prevProps.messages && prevProps.messages.length < this.props.messages.length && this.props.messages[ this.props.messages.length -1].author !== this.props.currentUser  ) {
+      const x = document.getElementById("myAudio");
+      x.play();
+    }
+  }
+
   render() {
     if (this.props.messages) {
       const { messages } = this.props;
+      const styles = {
+        borderBottom: "1px solid rgb(244, 244, 244)",
+        paddingBottom: "30px",
+        color: "rgb(70, 70, 90)"
+      }
       return (
         <div className="messages-list">
+          <audio id="myAudio">
+            <source src="../picture/insight.mp3" type="audio/mpeg"/>
+          </audio>
+          <h2 style={styles}>Channel: #{this.props.selectChanel ? this.props.selectChanel.toUpperCase() : "UNDEFINED"}</h2>
           <div className="messages">
             { messages.map(el => <Message message={el} key={el.content + Math.random(10000)} />) }
           </div>
@@ -49,7 +65,8 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
   return {
     messages: state.messagesList,
-    selectChanel: state.selectChannel
+    selectChanel: state.selectChannel,
+    currentUser: state.user
   };
 };
 

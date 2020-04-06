@@ -18,10 +18,14 @@ class ChannelsList extends Component {
   }
 
   render() {
+    const styles = {
+      marginBottom: 30,
+      color: "rgb(70, 70, 90)"
+    }
     return (
       <div className="channels">
-        <p className="headers">Channel list :</p>
-        {this.props.channels.map((channel) => <h2 onClick={() => this.handleClick(channel)}  className={ this.handleClass(channel) } key={channel + Math.random(100000)}>{channel.toUpperCase()}</h2> )}
+        <h3 style={styles} className="headers">Channel list :</h3>
+        {this.props.channels.map((channel) => <p onClick={() => this.handleClick(channel)}  className={ this.handleClass(channel) } key={channel + Math.random(100000)}>#{channel.toUpperCase()}</p> )}
       </div>
     );
   }
