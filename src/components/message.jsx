@@ -24,7 +24,7 @@ intToRGB = (i) => {
     return ( 
       <div>
         <h3 style={{ color: `#${this.intToRGB(this.hashCode(this.props.message.author))}`}} >{this.props.message.author}</h3>
-        <p>{ emojify(this.props.message.content) }</p>
+        <p>{ emojify(this.props.message.content)}</p>
       </div>
        
     );
