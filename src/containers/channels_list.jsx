@@ -21,7 +21,7 @@ class ChannelsList extends Component {
     return (
       <div className="channels">
         <p className="headers">Channel list :</p>
-        {this.props.channels.map((channel) => <h2 onClick={() => this.handleClick(channel)}  className={ this.handleClass(channel) } key={channel + Math.random(100000)}>{channel}</h2> )}
+        {this.props.channels.map((channel) => <h2 onClick={() => this.handleClick(channel)}  className={ this.handleClass(channel) } key={channel + Math.random(100000)}>{channel.toUpperCase()}</h2> )}
       </div>
     );
   }
