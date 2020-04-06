@@ -4,16 +4,17 @@ import { bindActionCreators } from 'redux';
 import { selectChannel } from '../actions';
 
 class ChannelsList extends Component {
-
   handleClass = (channel) => {
-    let classes = "channel";
+    const classes = "channel";
     if (this.props.selectChanel === channel) {
-      return classes += " selected"
+      const newClasses = `${classes} selected`;
+      return newClasses;
     }
     return classes;
   }
-  handleClick = (e) => {
-    this.props.selectChannel(e);
+
+  handleClick = (channel) => {
+    this.props.selectChannel(channel);
   }
 
   render() {
@@ -24,7 +25,7 @@ class ChannelsList extends Component {
       </div>
     );
   }
-};
+}
 
 const mapStateToProps = (state) => {
   return {
@@ -35,7 +36,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
-    {selectChannel: selectChannel},
+    { selectChannel: selectChannel },
     dispatch
   );
 };

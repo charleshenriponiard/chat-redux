@@ -6,6 +6,6 @@ export default function(state = null, action) {
     case 'SELECT_CHANNEL':
       return action.payload;
     default:
-      return initialState.selectChannel;
+      return state;
   }
 }

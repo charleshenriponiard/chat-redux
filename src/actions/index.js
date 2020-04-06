@@ -1,7 +1,6 @@
 // TODO: add and export your own actions
 
 export function selectMessage(channel) {
-  console.log(channel);
   return fetch(`https://wagon-chat.herokuapp.com/${channel}/messages`)
     .then(response => response.json())
     .then((data) => {
