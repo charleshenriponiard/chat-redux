@@ -34,10 +34,3 @@ export function createMessage(channel, content, author) {
     });
 }
 
-// export function selectChannel(channel) {
-//   return {
-//     type: 'SELECT_CHANNEL',
-//     payload: channel
-//   };
-// }
-

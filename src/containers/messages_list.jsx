@@ -17,15 +17,9 @@ class MessagesList extends Component {
     this.refresher = setInterval(this.fetchMessages, 500);
   }
 
-  // componentDidMount = () => {
-  //   return setInterval(() => {
-  //     return this.componentWillMount();
-  //   }, 500);
-  // }
-
   componentDidUpdate = (prevProps) => {
     this.list.scrollTop = this.list.scrollHeight;
-    if (prevProps.messages && prevProps.messages.length < this.props.messages.length && this.props.messages[ this.props.messages.length -1].author !== this.props.currentUser  ) {
+    if (prevProps.messages && prevProps.messages.length < this.props.messages.length && this.props.messages[this.props.messages.length - 1].author !== this.props.currentUser) {
       const x = document.getElementById("myAudio");
       x.play();
     }
