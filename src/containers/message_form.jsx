@@ -20,7 +20,7 @@ class MessageForm extends Component {
   }
 
   handleClick = () => {
-    this.props.createMessage(this.props.selectChanel, this.state.input, this.props.currentUser);
+    this.props.createMessage(this.props.channelFromParams, this.state.input, this.props.currentUser);
     this.setState({ input: "" });
   }
 
@@ -46,7 +46,7 @@ class MessageForm extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
-    { createMessage: createMessage },
+    { createMessage },
     dispatch
   );
 };
@@ -54,7 +54,6 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
   return {
     currentUser: state.user,
-    selectChanel: state.selectChannel
   };
 };
 

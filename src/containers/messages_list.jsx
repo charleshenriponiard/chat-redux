@@ -10,14 +10,18 @@ import MessageForm from '../containers/message_form';
 class MessagesList extends Component {
 
   componentWillMount = () => {
-    return this.props.selectMessages(this.props.selectChanel);
+    return this.fetchMessages();
   }
 
-  componentDidMount = () => {
-    return setInterval(() => {
-      return this.componentWillMount();
-    }, 500);
+  componentDidMount() {
+    this.refresher = setInterval(this.fetchMessages, 500);
   }
+
+  // componentDidMount = () => {
+  //   return setInterval(() => {
+  //     return this.componentWillMount();
+  //   }, 500);
+  // }
 
   componentDidUpdate = (prevProps) => {
     this.list.scrollTop = this.list.scrollHeight;
@@ -27,8 +31,12 @@ class MessagesList extends Component {
     }
   }
 
-  componentWillUnmount = () => {
-    return clearInterval;
+  componentWillUnmount() {
+    clearInterval(this.refresher);
+  }
+
+  fetchMessages = () => {
+    this.props.fetchMessages(this.props.channelFromParams);
   }
 
   render() {
@@ -44,11 +52,11 @@ class MessagesList extends Component {
           <audio id="myAudio">
             <source src="../../assets/images/insight.mp3" type="audio/mpeg"/>
           </audio>
-          <h2 style={styles}>Channel: #{this.props.selectChanel ? this.props.selectChanel.toUpperCase() : "UNDEFINED"}</h2>
+          <h2 style={styles}>Channel: #{this.props.channelFromParams ? this.props.channelFromParams.toUpperCase() : "UNDEFINED"}</h2>
           <div className="messages" ref={(list) => { this.list = list; }}>
             { messages.map(el => <Message message={el} key={el.content + Math.random(10000)} ref={this.scroll} />) }
           </div>
-          <MessageForm />
+          <MessageForm channelFromParams={this.props.channelFromParams} />
         </div>
       );
     }
@@ -58,7 +66,7 @@ class MessagesList extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
-    { selectMessages: selectMessage },
+    { fetchMessages: selectMessage },
     dispatch
   );
 };
@@ -66,7 +74,6 @@ const mapDispatchToProps = (dispatch) => {
 const mapStateToProps = (state) => {
   return {
     messages: state.messagesList,
-    selectChanel: state.selectChannel,
     currentUser: state.user
   };
 };
